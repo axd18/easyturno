@@ -11,9 +11,12 @@ const express = require('express')
 const app = express()
 const path = require('path')
 const bodyParser = require('body-parser');
-
-
+const { localsName } = require('ejs');
+const dateTime = require('node-datetime');
+const nodemailer = require("nodemailer");
 var var_arr=['Extracting finished. Refresh the browser to see your Google events'];
+ 
+const sgMail = require('@sendgrid/mail')
 
 app.use(express.static(path.join(__dirname, 'public')))
 app.set('views', __dirname + '/public/views');
@@ -144,13 +147,32 @@ app.post('/events', (req, res) =>{
   const calendar = google.calendar({ version: 'v3', auth: oAuth2Client })
 
   // Create a new event start date instance for temp uses in our calendar.
-  const eventStartTime = new Date()
-  eventStartTime.setDate(eventStartTime.getDay() + 2)
+
 
   // Create a new event end date instance for temp uses in our calendar.
-  const eventEndTime = new Date()
-  eventEndTime.setDate(eventEndTime.getDay() + 2)
-  eventEndTime.setMinutes(eventEndTime.getMinutes() + 60)
+
+  
+  const segundos = ":02.070Z";
+
+  const inicioDeEvento = `${req.body.eventStartTime}`+segundos;
+
+
+  const minutos = ":59.070Z";
+
+  
+//const finDeEvento2 = `${req.body.eventStartTime}`+minutos;
+
+  
+  
+  const finDeEvento2 = new Date(`${req.body.eventStartTime}`+minutos);
+ 
+  
+  finDeEvento2.setMinutes(finDeEvento2.getMinutes() + 20  )
+ 
+
+
+ //  const eventEndTime = new Date()
+ // eventEndTime.setMinutes(horaReserva(finDeEvento).getMinutes() + 59)
 
   // Create a dummy event for temp uses in our calendar
   const event = {
@@ -158,19 +180,20 @@ app.post('/events', (req, res) =>{
     description: `${req.body.description}`,
     colorId: 6,
     start: {
-      dateTime: eventStartTime,
+      dateTime: inicioDeEvento,
     },
     end: {
-      dateTime: eventEndTime,
+      dateTime: finDeEvento2,
     },
-  }
+ }
+
 
   // Check if we a busy and have an event on our calendar for the same time.
   calendar.freebusy.query(
     {
       resource: {
-        timeMin: eventStartTime,
-        timeMax: eventEndTime,
+        timeMin: inicioDeEvento,
+        timeMax:finDeEvento2,
         items: [{ id: 'primary' }],
       },
     },
@@ -190,7 +213,7 @@ app.post('/events', (req, res) =>{
             // Check for errors and log them if they exist.
             if (err) return console.error('Error Creating Calender Event:', err)
             // Else log that the event was created.
-            return console.log('Event created successfully.')
+            return enviarmail()
           })
         }
       // If event array is not empty log that we are busy.
@@ -200,10 +223,33 @@ app.post('/events', (req, res) =>{
   console.log(req.body)
   // using Twilio SendGrid's v3 Node.js Library
   // https://github.com/sendgrid/sendgrid-nodejs
-    
-}
- )
 
-app.listen(3000, () =>{
-  console.log('Server running on port 3000')
+  function enviarmail ()  { 
+  const sgMail = require('@sendgrid/mail')
+  sgMail.setApiKey('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')
+  const msg = {
+    to: req.body.to, // Change to your recipient
+    from: 'manzomariano@hotmail.com', // Change to your verified sender
+    subject: req.body.summary,
+    text: req.body.description,
+    html: req.body.eventStartTime,
+  }
+  sgMail
+    .send(msg)
+    .then(() => {
+      console.log('Email sent')
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+
+  res.render('events.html')
+   }
 })
+
+
+ const PORT = process.env.PORT || 3000;
+
+ app.listen(PORT, () => {
+   console.log(`Servidor a la escucha en el puerto ${PORT}`);
+ });
