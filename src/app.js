@@ -1,12 +1,3 @@
-/*
-  Make YOUR OWN credentials.json file BEFORE running the CODE
-
-  Watch video: The Google Calendar API (PART 1)
-
-  Time: 13:20 - Google Calendar API and credentials.json
-
-*/
-
 const express = require('express')
 const app = express()
 const path = require('path')
@@ -15,8 +6,11 @@ const { localsName } = require('ejs');
 const dateTime = require('node-datetime');
 const nodemailer = require("nodemailer");
 var var_arr=['Extracting finished. Refresh the browser to see your Google events'];
- 
-const sgMail = require('@sendgrid/mail')
+
+
+
+const sgMail = require('@sendgrid/mail');
+const { json } = require('express');
 
 app.use(express.static(path.join(__dirname, 'public')))
 app.set('views', __dirname + '/public/views');
@@ -217,22 +211,25 @@ app.post('/events', (req, res) =>{
           })
         }
       // If event array is not empty log that we are busy.
-      return console.log(`Sorry I'm busy for that time...`)
+
+        return nohaylugar()
+
+
     }
   )
   console.log(req.body)
   // using Twilio SendGrid's v3 Node.js Library
   // https://github.com/sendgrid/sendgrid-nodejs
 
-  function enviarmail ()  { 
+  async function enviarmail ()  { 
   const sgMail = require('@sendgrid/mail')
   sgMail.setApiKey('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')
   const msg = {
     to: req.body.to, // Change to your recipient
-    from: 'manzomariano@hotmail.com', // Change to your verified sender
+    from: 'adrianfernandezj@gmail.com', // Change to your verified sender
     subject: req.body.summary,
     text: req.body.description,
-    html: req.body.eventStartTime,
+    html:"Hora de Reserva :  "+ req.body.eventStartTime+" Sintomas del paciente : "+req.body.description,
   }
   sgMail
     .send(msg)
@@ -246,6 +243,20 @@ app.post('/events', (req, res) =>{
   res.render('events.html')
    }
 })
+
+
+
+ function nohaylugar(){
+
+
+   let alert = require('alert');  
+  alert("Horario No Disponible")
+ 
+ }
+  
+
+ 
+ 
 
 
  const PORT = process.env.PORT || 3000;

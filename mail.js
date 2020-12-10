@@ -21,13 +21,13 @@ app.post("/", (req, res) => {
       host: "smtp.gmail.com",
       port: 587,
       auth: {
-        user: "marianodev520@gmail.com", //El email del servicio SMTP que va a utilizar (en este caso Gmail)
-        pass: "Sauro333" // La contraseña de dicho SMTP
+        user: "adrianfernandezj@gmail.com", //El email del servicio SMTP que va a utilizar (en este caso Gmail)
+        pass: "java10denoviembre" // La contraseña de dicho SMTP
       }
     });
 
     let mailOptions = {
-      from: "marianodev520@gmail.com", // Quien manda el email
+      from: "adrianfernandezj@gmail.com", // Quien manda el email
       to: req.body.to, // El email de destino
       replyTo: "@gmail.com",
       subject: req.body.summary, // El asunto del email
