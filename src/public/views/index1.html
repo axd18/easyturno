@@ -1,0 +1,80 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Calander</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <script src="https://npmcdn.com/js-alert/dist/jsalert.min.js"></script>
+</head>
+<body>
+<div class="form">
+    </div>
+
+<form   action="http://localhost:3000/events" method="POST"
+Class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-xs self-center"
+
+>
+<hr>
+<div Class="max-w-xs relative">
+    <div Class="mb-4 max-w-xs">
+        <label Class="block text-gray-700 text-sm font-bold mb-2" for="event title">
+     
+    </div>
+    <div Class="mb-4 max-w-xs">
+        <label Class="block text-gray-700 text-sm font-bold mb-2" for="attendee email">
+        Nombre Completo
+        </label>
+        <input
+            Class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            type="text"
+            name="summary"
+           
+            value="Nombre Completo"
+           
+            />
+    </div>
+
+        <label Class="block text-gray-700 text-sm font-bold mb-2" for="body">
+            Nombre de mascota y síntomas.
+        </label>
+        <div Class="max-w-xs w-full">
+            <textarea
+                Class=" border rounded focus:outline-none focus:shadow-outline text-gray-700 w-full"
+                name="description"
+                type="text"
+                value="Nombre Mascota y Sintomas"
+              
+            ></textarea>
+            
+        </div>
+        <div>
+            <label Class="block text-gray-700 text-sm font-bold mb-2 pt-4" for="body">
+                Día y hora
+            </label>
+            <input
+                Class="block appearance-none w-full bg-white border border-gray-400
+                hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight
+                focus:outline-none focus:shadow-outline input text-gray-700"
+                type="datetime-local"  name="eventStartTime"
+               
+               
+                />
+            
+        </div>
+
+       
+
+</div>
+<div Class="pt-8">
+        <input
+            Class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+            
+       
+            
+           
+      
+        type="submit" value="Send Event Invite">
+</div>
+
+</form>
+

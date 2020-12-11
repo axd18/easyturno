@@ -1,3 +1,4 @@
+
 const express = require('express')
 const app = express()
 const path = require('path')
@@ -9,6 +10,9 @@ var var_arr=['Extracting finished. Refresh the browser to see your Google events
 
 
 
+
+
+ 
 const sgMail = require('@sendgrid/mail');
 const { json } = require('express');
 
@@ -226,7 +230,7 @@ app.post('/events', (req, res) =>{
   sgMail.setApiKey('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')
   const msg = {
     to: req.body.to, // Change to your recipient
-    from: 'adrianfernandezj@gmail.com', // Change to your verified sender
+    from: 'mariandev520@gmail.com', // Change to your verified sender
     subject: req.body.summary,
     text: req.body.description,
     html:"Hora de Reserva :  "+ req.body.eventStartTime+" Sintomas del paciente : "+req.body.description,
@@ -249,7 +253,7 @@ app.post('/events', (req, res) =>{
  function nohaylugar(){
 
 
-   let alert = require('alert');  
+  let alert = require('alert');  
   alert("Horario No Disponible")
  
  }
