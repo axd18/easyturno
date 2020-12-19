@@ -14,12 +14,20 @@ var var_arr = [
 const sgMail = require("@sendgrid/mail");
 const { json } = require("express");
 
+const { check, validationResult } = require('express-validation')
+
 app.use(express.static(path.join(__dirname, "public")));
 app.set("views", __dirname + "/public/views");
 app.engine("html", require("ejs").renderFile);
 app.set("view engine", "html");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+// settear la vista
+app.set('view engine', 'ejs');
+
+const urlencodedParser = bodyParser.urlencoded({extended: false});
+
 
 app.get("/", (req, res) => {
   res.render("index.html");
@@ -169,7 +177,7 @@ app.post("/events", (req, res) => {
   finDeEvento2.setMinutes(finDeEvento2.getMinutes() + 20);
 
   const event = {
-    summary: `${req.body.summary}`,
+    summary: `${req.body.summary+" "}`+ `${req.body.to}`,
     description: `${req.body.description}`,
     colorId: 6,
     start: {
