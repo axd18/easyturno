@@ -6,26 +6,51 @@
   <link rel="stylesheet" href="../css/main.css">
   <title>Google Events</title>
 </head>
-<body class="bg-gradient-to-r from-blue-500 to-purple-600">
-  <div class=" mx-auto max-w-sm rounded overflow-hidden shadow-lg bg-white mt-40">
-            
-    <div class="px-6 py-4">
-        <div class="font-bold text-4xl mb-2">Reserva Confirmada!</div>
-        <div class="text-gray-700 text-base">
-            <p class="pb-2">La reserva del turno fue enviada a tu email.</p>
-            <p class="pb-2">Muchas gracias.</p>
-        </div>
-        <div class="pb-6">
-            <button  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
-            type="submit"    onclick="window.location.href='http://localhost:3000'"
-             >
-       
-                Cerrar
-            </button>
-        </div>
-        
+<body class="bg-gray-300">
+  <div class="bg-gradient-to-r from-blue-500 to-purple-600 pt-24 pb-40">
+    <div class="mx-auto max-w-sm rounded overflow-hidden shadow-lg bg-white mt-40 ">
+              
+      <div class="px-6 py-4 text-gray-700">
+          <div class="font-bold text-4xl text-center leading-10 mb-2 pb-4">Turno <br>Confirmado!</div>
+          <div class=" text-base text-center leading-8 text-xl">
+              <p class="pb-2">La reserva fue enviada a tu email. Muchas gracias.</p>
+          </div>
+          <div class="pb-4 pt-4">
+              <button  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+              type="submit"
+              onclick="window.location.href='http://localhost:3000'"
+              >
+              Cerrar
+              </button>
+          </div>
+          
+      </div>
     </div>
-</div>
+  </div>
+  <footer class="bg-gray-300 w-full py-6 px-4"><!-- marging just for display-->
+    
+    <div class="flex items-center justify-between my-4 text-center">
+        <p class="text-blue-500">Todos los derechos reservados</p>
+        <p class="text-blue-500 px-2 pt-6">Hecho
+            <!--<svg fill="#e53e3e" viewBox="0 0 24 24"  class="w-5 h-5 mx-1 pt-px text-red-600" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            </svg>-->por lamdev.com.ar</p>
+        <div class="flex items-center">
+            <a href="#">
+                <svg class="h-6 w-6 fill-current text-blue-600 mr-6" viewBox="0 0 512 512">
+                    <path d="M455.27,32H56.73A24.74,24.74,0,0,0,32,56.73V455.27A24.74,24.74,0,0,0,56.73,480H256V304H202.45V240H256V189c0-57.86,40.13-89.36,91.82-89.36,24.73,0,51.33,1.86,57.51,2.68v60.43H364.15c-28.12,0-33.48,13.3-33.48,32.9V240h67l-8.75,64H330.67V480h124.6A24.74,24.74,0,0,0,480,455.27V56.73A24.74,24.74,0,0,0,455.27,32Z"/>
+                </svg>
+            </a>
+            <a href="#">
+                <svg fill="none"  class="h-6 w-6 text-blue-600 mr-6" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+            </a>
+           
+        </div>
+    </div>
+  </footer>
+
 
 </body>
 </html>

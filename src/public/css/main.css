@@ -8,7 +8,6 @@
     animation: gradient 15s ease infinite;
     /*clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 0% 100%);*/
 }
-
 @keyframes gradient {
 	0% {
 		background-position: 0% 50%;
@@ -21,6 +20,53 @@
 	}
 }
 
+/*svg*/
+#check-human {
+  animation: check 2s ease-in-out infinite forwards;
+}
+@keyframes check {
+  from {
+    transform: translateY(5%);
+    opacity: 1;
+    
+  }
+  to {
+    transform: translateY(-40%);
+    opacity: 0;
+   
+  }
+}
+
+#check-human_2 {
+  animation: check2 3s ease-in-out infinite forwards;
+  animation-delay: 1s;
+  
+}
+@keyframes check2 {
+  from {
+    transform: translateY(20%);
+    opacity: 1;
+    scale: 100%;
+  }
+  to {
+    transform: translateY(-30%);
+    opacity: 0;
+    scale: 150%;
+  }
+}
+
+/*#cola {
+  animation: cola 2s ease-in-out infinite alternate;
+  transform-origin: top;
+}
+@keyframes cola {
+  from {
+    transform: rotateX(0deg);
+  }
+  to {
+    transform: rotateX(10deg);
+  }
+}
 /**
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
